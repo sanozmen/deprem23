@@ -287,23 +287,18 @@
 
 
 
-        /*    binalarCluster = new L.MarkerClusterGroup({
+          binalarCluster = new L.MarkerClusterGroup({
                spiderfyOnMaxZoom: true,
                showCoverageOnHover: true,
                zoomToBoundsOnClick: true,
                disableClusteringAtZoom: 16
            });
 
-           kamplarCluster = new L.MarkerClusterGroup({
-               spiderfyOnMaxZoom: true,
-               showCoverageOnHover: true,
-               zoomToBoundsOnClick: true,
-               disableClusteringAtZoom: 16
-           }); */
+        
 
         $.getJSON("assets/js/binalar.geojson", function (data) {
             binalar.addData(data);
-            //binalarCluster.addLayer(binalar);
+            binalarCluster.addLayer(binalar);
         });
 
         $.getJSON("assets/js/alanlar.geojson", function (data) {
@@ -317,7 +312,7 @@
         var map = L.map('map', {
             zoom: 8,
             center: [37.71, 37.10],
-            layers: [grayscale, binalar]
+            layers: [grayscale, binalarCluster]
 
 
         });
@@ -329,8 +324,8 @@
 
         var infoLayers = {
 
-            "Binalar": binalar,
-            "Alanlar": alanlar
+            "Binalar": binalarCluster,
+            //"Alanlar": alanlar
 
         }
 
