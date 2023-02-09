@@ -301,7 +301,7 @@
                disableClusteringAtZoom: 16
            }); */
 
-        $.getJSON("assets/js/EMSR648_AOI19_GRA_PRODUCT_builtUpP_r1_v1.json", function (data) {
+        $.getJSON("assets/js/binalar.geojson", function (data) {
             binalar.addData(data);
             //binalarCluster.addLayer(binalar);
         });
@@ -317,7 +317,7 @@
         var map = L.map('map', {
             zoom: 8,
             center: [37.71, 37.10],
-            layers: [grayscale, binalar, alanlar]
+            layers: [grayscale, binalar]
 
 
         });
