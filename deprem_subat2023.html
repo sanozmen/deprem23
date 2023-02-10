@@ -188,9 +188,14 @@
 
 
         let Stadia_OSMBright = L.tileLayer('https://tiles.stadiamaps.com/tiles/osm_bright/{z}/{x}/{y}{r}.png', {
-	maxZoom: 20,
-	attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
-});
+            maxZoom: 20,
+            attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
+        });
+
+        var OpenStreetMap_Mapnik = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        });
 
         let Esri_WorldImagery = L.tileLayer(
             'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
@@ -292,14 +297,14 @@
 
 
 
-          binalarCluster = new L.MarkerClusterGroup({
-               spiderfyOnMaxZoom: true,
-               showCoverageOnHover: true,
-               zoomToBoundsOnClick: true,
-               disableClusteringAtZoom: 15
-           });
+        binalarCluster = new L.MarkerClusterGroup({
+            spiderfyOnMaxZoom: true,
+            showCoverageOnHover: true,
+            zoomToBoundsOnClick: true,
+            disableClusteringAtZoom: 15
+        });
 
-        
+
 
         $.getJSON("assets/js/binalar.geojson", function (data) {
             binalar.addData(data);
@@ -310,13 +315,13 @@
         var map = L.map('map', {
             zoom: 8,
             center: [37.71, 37.10],
-            layers: [Stadia_OSMBright, binalarCluster]
+            layers: [OpenStreetMap_Mapnik, binalarCluster]
 
 
         });
 
         var baseLayers = {
-            "Altlik Harita": Stadia_OSMBright,
+            "Altlik Harita": OpenStreetMap_Mapnik,
             "Uydu Görüntüsü": Esri_WorldImagery
         }
 
